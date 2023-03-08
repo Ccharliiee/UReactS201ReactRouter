@@ -5,14 +5,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import RootLayout from "./pages/rootLayout";
 import HomeNavScrollExample from "./pages/home";
 import ProductContainerFluidExample from "./pages/products";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route path="/" element={<RootLayout />}>
       <Route path="/" element={<HomeNavScrollExample />} />
       <Route path="products" element={<ProductContainerFluidExample />} />
     </Route>
