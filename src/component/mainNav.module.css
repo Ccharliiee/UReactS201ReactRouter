@@ -15,3 +15,13 @@
   text-decoration: none;
   color: var(--color-primary-400);
 }
+
+.list a:hover,
+.list a.pending {
+  color: var(--color-primary-700);
+}
+
+.list a.active {
+  color: var(--color-primary-800);
+  text-decoration: underline;
+}
