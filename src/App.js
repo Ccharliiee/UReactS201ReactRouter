@@ -8,10 +8,11 @@ import {
 import RootLayout from "./pages/rootLayout";
 import HomeNavScrollExample from "./pages/home";
 import ProductContainerFluidExample from "./pages/products";
+import { ErrorPage } from "./pages/errorpage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
       <Route path="/" element={<HomeNavScrollExample />} />
       <Route path="products" element={<ProductContainerFluidExample />} />
     </Route>
