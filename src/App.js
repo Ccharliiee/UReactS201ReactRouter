@@ -8,6 +8,7 @@ import {
 import RootLayout from "./pages/rootLayout";
 import HomeNavScrollExample from "./pages/home";
 import ProductContainerFluidExample from "./pages/products";
+import ProductDetailPage from "./pages/productDetail";
 import { ErrorPage } from "./pages/errorpage";
 
 const router = createBrowserRouter(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
       <Route path="/" element={<HomeNavScrollExample />} />
       <Route path="products" element={<ProductContainerFluidExample />} />
+      <Route path="products/:productId" element={<ProductDetailPage />} />
     </Route>
   )
 );
