@@ -29,6 +29,16 @@ const MainNav = () => {
               Products
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/events"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Events
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
