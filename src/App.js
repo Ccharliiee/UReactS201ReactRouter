@@ -7,6 +7,7 @@ import {
 
 import RootLayout from "./pages/rootLayout";
 import HomePage from "./pages/home";
+import ProductRootLayout from "./pages/productsRoot";
 import ProductContainerFluidExample from "./pages/products";
 import ProductDetailPage from "./pages/productDetail";
 import EventsRootLayout from "./pages/EventsRoot";
@@ -20,8 +21,11 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
       <Route index element={<HomePage />} />
-      <Route path="products" element={<ProductContainerFluidExample />} />
-      <Route path="products/:productId" element={<ProductDetailPage />} />
+      <Route path="/products" element={<ProductRootLayout />}>
+        <Route index element={<ProductContainerFluidExample />} />
+        <Route path=":productId" element={<ProductDetailPage />} />
+      </Route>
+
       <Route path="/events" element={<EventsRootLayout />}>
         <Route index element={<EventsPage />} />
         <Route path=":eventId" element={<EventDetailPage />} />

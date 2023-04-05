@@ -7,7 +7,6 @@ const ProductsPage = () => {
   ];
   return (
     <>
-      <h1>The Products Page</h1>
       <ul>
         {DUMMYPRODUCTS.map((prod) => (
           <li key={prod.id}>

@@ -5,7 +5,7 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      <h1>Product Details!</h1>
+      <h2>Product Details</h2>
       <p>{params.productId}</p>
       <p>
         <Link to=".." relative="path">
