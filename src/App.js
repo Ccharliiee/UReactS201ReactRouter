@@ -11,7 +11,7 @@ import ProductRootLayout from "./pages/productsRoot";
 import ProductContainerFluidExample from "./pages/products";
 import ProductDetailPage from "./pages/productDetail";
 import EventsRootLayout from "./pages/EventsRoot";
-import EventsPage from "./pages/Events";
+import EventsPage, { EventLoader } from "./pages/Events";
 import EventDetailPage from "./pages/EventDetail";
 import EditEventPage from "./pages/EditEvent";
 import NewEventPage from "./pages/NewEvent";
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path="/events" element={<EventsRootLayout />}>
-        <Route index element={<EventsPage />} />
+        <Route index element={<EventsPage />} loader={EventLoader} />
         <Route path=":eventId" element={<EventDetailPage />} />
         <Route path=":eventId/edit" element={<EditEventPage />} />
         <Route path="new" element={<NewEventPage />} />

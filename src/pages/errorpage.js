@@ -15,6 +15,9 @@ export const ErrorPage = () => {
         <p>
           <i>{error.statusText || error.message}</i>
         </p>
+        <p>
+          <i>{error.data.message}</i>
+        </p>
       </main>
     </>
   );
