@@ -12,7 +12,7 @@ import ProductContainerFluidExample from "./pages/products";
 import ProductDetailPage from "./pages/productDetail";
 import EventsRootLayout from "./pages/EventsRoot";
 import EventsPage, { EventLoader } from "./pages/Events";
-import EventDetailPage from "./pages/EventDetail";
+import EventDetailPage, { EventItemLoader } from "./pages/EventDetail";
 import EditEventPage from "./pages/EditEvent";
 import NewEventPage from "./pages/NewEvent";
 import { ErrorPage } from "./pages/errorpage";
@@ -28,7 +28,11 @@ const router = createBrowserRouter(
 
       <Route path="/events" element={<EventsRootLayout />}>
         <Route index element={<EventsPage />} loader={EventLoader} />
-        <Route path=":eventId" element={<EventDetailPage />} />
+        <Route
+          path=":eventId"
+          element={<EventDetailPage />}
+          loader={EventItemLoader}
+        />
         <Route path=":eventId/edit" element={<EditEventPage />} />
         <Route path="new" element={<NewEventPage />} />
       </Route>
