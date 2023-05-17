@@ -14,7 +14,7 @@ import EventsRootLayout from "./pages/EventsRoot";
 import EventsPage, { EventLoader } from "./pages/Events";
 import EventDetailPage, { EventItemLoader } from "./pages/EventDetail";
 import EditEventPage from "./pages/EditEvent";
-import NewEventPage from "./pages/NewEvent";
+import NewEventPage, { action as newEventAction } from "./pages/NewEvent";
 import { ErrorPage } from "./pages/errorpage";
 
 const router = createBrowserRouter(
@@ -32,7 +32,7 @@ const router = createBrowserRouter(
           <Route index element={<EventDetailPage />} />
           <Route path="edit" element={<EditEventPage />} />
         </Route>
-        <Route path="new" element={<NewEventPage />} />
+        <Route path="new" element={<NewEventPage />} action={newEventAction} />
       </Route>
     </Route>
   )
