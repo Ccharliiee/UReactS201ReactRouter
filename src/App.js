@@ -28,12 +28,10 @@ const router = createBrowserRouter(
 
       <Route path="/events" element={<EventsRootLayout />}>
         <Route index element={<EventsPage />} loader={EventLoader} />
-        <Route
-          path=":eventId"
-          element={<EventDetailPage />}
-          loader={EventItemLoader}
-        />
-        <Route path=":eventId/edit" element={<EditEventPage />} />
+        <Route path=":eventId" loader={EventItemLoader} id="event-detail">
+          <Route index element={<EventDetailPage />} />
+          <Route path="edit" element={<EditEventPage />} />
+        </Route>
         <Route path="new" element={<NewEventPage />} />
       </Route>
     </Route>
