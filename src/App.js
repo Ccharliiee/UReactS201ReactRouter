@@ -17,7 +17,8 @@ import EventDetailPage, {
   deleteEventAction,
 } from "./pages/EventDetail";
 import EditEventPage from "./pages/EditEvent";
-import NewEventPage, { action as newEventAction } from "./pages/NewEvent";
+import NewEventPage from "./pages/NewEvent";
+import { eventUploadAction } from "./component/EventForm";
 import { ErrorPage } from "./pages/errorpage";
 
 const router = createBrowserRouter(
@@ -37,9 +38,17 @@ const router = createBrowserRouter(
             element={<EventDetailPage />}
             action={deleteEventAction}
           />
-          <Route path="edit" element={<EditEventPage />} />
+          <Route
+            path="edit"
+            element={<EditEventPage />}
+            action={eventUploadAction}
+          />
         </Route>
-        <Route path="new" element={<NewEventPage />} action={newEventAction} />
+        <Route
+          path="new"
+          element={<NewEventPage />}
+          action={eventUploadAction}
+        />
       </Route>
     </Route>
   )
