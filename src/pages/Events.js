@@ -18,13 +18,13 @@ const EventsPage = () => {
 
 export default EventsPage;
 
-const EventLoaderFunc = async () => {
+export const EventLoaderFunc = async () => {
   const response = await fetch(process.env.REACT_APP_EventsAPI);
   if (response.ok) {
     const responseData = await response.json();
     return responseData;
   } else {
-    throw json({ message: "Events data fetch failed" }, { status: 500 });
+    throw json({ message: "Event list data fetch failed" }, { status: 500 });
   }
 };
 

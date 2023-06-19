@@ -4,7 +4,8 @@ import MainNav from "../component/mainNav";
 
 export const ErrorPage = () => {
   const error = useRouteError();
-  console.error(error);
+  console.log("error");
+  console.log(error);
 
   return (
     <>
@@ -16,7 +17,7 @@ export const ErrorPage = () => {
           <i>{error.statusText || error.message}</i>
         </p>
         <p>
-          <i>{error.data.message}</i>
+          <i>{error.data?.message}</i>
         </p>
       </main>
     </>

@@ -13,7 +13,7 @@ import ProductDetailPage from "./pages/productDetail";
 import EventsRootLayout from "./pages/EventsRoot";
 import EventsPage, { EventLoader } from "./pages/Events";
 import EventDetailPage, {
-  EventItemLoader,
+  EventPageDataLoader,
   deleteEventAction,
 } from "./pages/EventDetail";
 import EditEventPage from "./pages/EditEvent";
@@ -33,7 +33,7 @@ const router = createBrowserRouter(
 
       <Route path="/events" element={<EventsRootLayout />}>
         <Route index element={<EventsPage />} loader={EventLoader} />
-        <Route path=":eventId" loader={EventItemLoader} id="event-detail">
+        <Route path=":eventId" loader={EventPageDataLoader} id="event-detail">
           <Route
             index
             element={<EventDetailPage />}

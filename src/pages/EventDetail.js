@@ -1,26 +1,58 @@
-import { json, useRouteLoaderData, redirect } from "react-router-dom";
+import { Suspense } from "react";
 
+import {
+  useRouteLoaderData,
+  json,
+  defer,
+  Await,
+  redirect,
+} from "react-router-dom";
+
+import EventsList from "../component/EventsList";
 import EventItem from "../component/EventItem";
+import { EventLoaderFunc as eventsloader } from "./Events";
 
 const EventDetailPage = () => {
+  const { eventData, eventsData } = useRouteLoaderData("event-detail");
   return (
     <>
-      <EventItem event={useRouteLoaderData("event-detail")} />
+      <Suspense
+        fallback={<p style={{ textAlign: "center" }}>Loading eventData...</p>}
+      >
+        <Await resolve={eventData}>
+          {(loadedEvent) => <EventItem event={loadedEvent} />}
+        </Await>
+      </Suspense>
+      <Suspense
+        fallback={<p style={{ textAlign: "center" }}>Loading eventsData...</p>}
+      >
+        <Await resolve={eventsData}>
+          {(loadedEvents) => <EventsList events={loadedEvents} />}
+        </Await>
+      </Suspense>
     </>
   );
 };
 
 export default EventDetailPage;
 
-export const EventItemLoader = async ({ request, params }) => {
+const eventloader = async (eventId) => {
   const response = await fetch(
-    process.env.REACT_APP_EventAPI + params.eventId + ".json"
+    process.env.REACT_APP_EventAPI + eventId + ".json"
   );
   if (response.ok) {
-    return response;
+    const responseData = await response.json();
+    return responseData;
   } else {
     throw json({ message: "Event detail data fetch failed" }, { status: 500 });
   }
+};
+
+export const EventPageDataLoader = async ({ request, params }) => {
+  return defer({
+    eventData: await eventloader(params.eventId),
+    eventsData: eventsloader(),
+  });
 };
 
 export const deleteEventAction = async ({ params, request }) => {
