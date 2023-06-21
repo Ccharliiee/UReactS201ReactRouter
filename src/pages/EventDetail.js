@@ -37,9 +37,7 @@ const EventDetailPage = () => {
 export default EventDetailPage;
 
 const eventloader = async (eventId) => {
-  const response = await fetch(
-    process.env.REACT_APP_EventAPI + eventId + ".json"
-  );
+  const response = await fetch(process.env.REACT_APP_EventAPI + eventId);
   if (response.ok) {
     const responseData = await response.json();
     return responseData;
