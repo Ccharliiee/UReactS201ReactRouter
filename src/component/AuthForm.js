@@ -23,7 +23,7 @@ const AuthForm = () => {
           <Link to={`?mode=${isLogin ? "signup" : "login"}`}>
             {isLogin ? "Create account" : "Login"}
           </Link>
-          <button>Save</button>
+          <button>Submit</button>
         </div>
       </Form>
     </>

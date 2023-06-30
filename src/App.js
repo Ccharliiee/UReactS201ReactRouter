@@ -21,12 +21,16 @@ import NewEventPage from "./pages/NewEvent";
 import { eventUploadAction } from "./component/EventForm";
 import NewsletterPage, { newsletterSignupAction } from "./pages/Newsletter";
 import { ErrorPage } from "./pages/errorpage";
-import AuthenticationPage from "./pages/Authentication";
+import AuthenticationPage, { authAction } from "./pages/Authentication";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
-      <Route path="/auth" element={<AuthenticationPage />} />
+      <Route
+        path="/auth"
+        element={<AuthenticationPage />}
+        action={authAction}
+      />
       <Route index element={<HomePage />} />
       <Route path="/products" element={<ProductRootLayout />}>
         <Route index element={<ProductContainerFluidExample />} />
