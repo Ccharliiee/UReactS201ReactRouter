@@ -52,7 +52,7 @@ const MainNav = () => {
           </li>
           <li>
             <NavLink
-              to="/auth"
+              to="/auth?mode=login"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
