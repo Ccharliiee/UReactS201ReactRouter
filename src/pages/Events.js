@@ -22,7 +22,7 @@ export const EventLoaderFunc = async () => {
   const response = await fetch(process.env.REACT_APP_EventsAPI);
   if (response.ok) {
     const responseData = await response.json();
-    return responseData;
+    return responseData.events;
   } else {
     throw json({ message: "Event list data fetch failed" }, { status: 500 });
   }
