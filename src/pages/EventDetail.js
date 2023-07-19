@@ -11,6 +11,7 @@ import {
 import EventsList from "../component/EventsList";
 import EventItem from "../component/EventItem";
 import { EventLoaderFunc as eventsloader } from "./Events";
+import { getEventsAccessAuthToken } from "../utils/authUtil";
 
 const EventDetailPage = () => {
   const { eventData, eventsData } = useRouteLoaderData("event-detail");
@@ -40,7 +41,7 @@ const eventloader = async (eventId) => {
   const response = await fetch(process.env.REACT_APP_EventAPI + eventId);
   if (response.ok) {
     const responseData = await response.json();
-    return responseData;
+    return responseData.event;
   } else {
     throw json({ message: "Event detail data fetch failed" }, { status: 500 });
   }
@@ -55,10 +56,14 @@ export const EventPageDataLoader = async ({ request, params }) => {
 
 export const deleteEventAction = async ({ params, request }) => {
   const eventId = params.eventId;
+  const eventsAccessToken = getEventsAccessAuthToken();
   const response = await fetch(
     process.env.REACT_APP_EventAPI + eventId + ".json",
     {
       method: request.method,
+      headers: {
+        Authorization: "Bearer " + eventsAccessToken,
+      },
     }
   );
 
