@@ -23,10 +23,17 @@ import NewsletterPage, { newsletterSignupAction } from "./pages/Newsletter";
 import { ErrorPage } from "./pages/errorpage";
 import AuthenticationPage, { authAction } from "./pages/Authentication";
 import { LogoutAction } from "./pages/logout";
+import { getEventsAccessAuthToken } from "./utils/authUtil";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
+    <Route
+      path="/"
+      element={<RootLayout />}
+      errorElement={<ErrorPage />}
+      loader={getEventsAccessAuthToken}
+      id="root"
+    >
       <Route
         path="/auth"
         element={<AuthenticationPage />}
