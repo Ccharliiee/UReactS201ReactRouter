@@ -23,7 +23,10 @@ import NewsletterPage, { newsletterSignupAction } from "./pages/Newsletter";
 import { ErrorPage } from "./pages/errorpage";
 import AuthenticationPage, { authAction } from "./pages/Authentication";
 import { LogoutAction } from "./pages/logout";
-import { getEventsAccessAuthToken } from "./utils/authUtil";
+import {
+  getEventsAccessAuthToken,
+  checkEventsAccessToken,
+} from "./utils/authUtil";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,12 +59,14 @@ const router = createBrowserRouter(
           />
           <Route
             path="edit"
+            loader={checkEventsAccessToken}
             element={<EditEventPage />}
             action={eventUploadAction}
           />
         </Route>
         <Route
           path="new"
+          loader={checkEventsAccessToken}
           element={<NewEventPage />}
           action={eventUploadAction}
         />
