@@ -38,6 +38,9 @@ export const authAction = async ({ request }) => {
   const eventsAccessToken = responseData.token;
 
   localStorage.setItem("eventsAccess", eventsAccessToken);
+  const expiration = new Date();
+  expiration.setHours(expiration.getHours() + 2);
+  localStorage.setItem("eventsAccessExpiration", expiration.toISOString());
 
   return redirect("/");
 };
