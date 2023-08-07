@@ -22,6 +22,7 @@ import { eventUploadAction } from "./component/EventForm";
 import NewsletterPage, { newsletterSignupAction } from "./pages/Newsletter";
 import { ErrorPage } from "./pages/errorpage";
 import AuthenticationPage, { authAction } from "./pages/Authentication";
+import { LogoutAction } from "./pages/logout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
         element={<AuthenticationPage />}
         action={authAction}
       />
+      <Route path="/logout" action={LogoutAction} />
       <Route index element={<HomePage />} />
       <Route path="/products" element={<ProductRootLayout />}>
         <Route index element={<ProductContainerFluidExample />} />
